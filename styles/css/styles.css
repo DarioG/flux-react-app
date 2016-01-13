@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  background-color: #FEC956; }
+
+#main {
+  width: 100%;
+  padding: 120px 0; }
+  #main .componentsWrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start; }
+
+.productView {
+  width: 50%;
+  padding: 50px;
+  background-color: white; }
+
+.productPicture {
+  width: 60%;
+  display: inline-block; }
+
+img {
+  max-width: 100%; }
+
+.infoSection {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  margin-left: 7%;
+  line-height: 20px;
+  font-size: 1.2em; }
+
+.priceWrapper {
+  font-weight: bold; }
+  .priceWrapper input {
+    border: none;
+    font-size: 1.2em; }
+
+.addToCartButton {
+  color: white;
+  background: linear-gradient(#00B372 80%, #006852);
+  background-color: #00B372;
+  border: none;
+  border-radius: 3px;
+  width: 100%;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 5px 0;
+  cursor: pointer; }
+  .addToCartButton:active {
+    background: linear-gradient(#006852 20%, #00B372); }
+
+.select-product-view {
+  width: 100%;
+  margin: 20px 0;
+  border-radius: 2px;
+  padding: 2px; }
+
+.cartView {
+  vertical-align: top;
+  width: 15%;
+  margin: 0 50px;
+  padding: 20px;
+  background-color: white;
+  min-height: 50%; }
+
+.cartListView {
+  margin-bottom: 20px; }
+  .cartListView h3 {
+    text-align: center; }
+
+.itemsList {
+  min-height: 50px; }
+
+.removeButton {
+  color: white;
+  background: linear-gradient(#ED3F00 80%, #9C2A00);
+  background-color: #ED3F00;
+  border: none;
+  border-radius: 3px;
+  width: 100%;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 5px 0;
+  cursor: pointer; }
+  .removeButton:active {
+    background: linear-gradient(#9C2A00 20%, #ED3F00); }
+
+.totalView {
+  background-color: #018BAF;
+  color: white;
+  font-weight: bold;
+  margin: 0 -20px -20px -20px;
+  padding: 15px; }

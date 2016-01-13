@@ -1,0 +1,16 @@
+@mixin button-style($colorFrom, $colorTo) {
+    color: white;
+    background: linear-gradient($colorFrom 80%, $colorTo);
+    background-color: $colorFrom;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 5px 0;
+    cursor: pointer;
+
+    &:active {
+        background: linear-gradient($colorTo 20%, $colorFrom);
+    }
+}

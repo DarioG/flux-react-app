@@ -1,0 +1,14 @@
+{
+  "name": "challenge-with-flux",
+  "dependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4",
+    "react": "^0.13.3",
+    "reflux": "^0.2.8",
+    "object-assign": "^1.0.0",
+    "flux": "^2.0.1"
+  },
+  "scripts": {
+    "build": "browserify -t babelify src/app.js > build.js"
+  }
+}

@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    background-color: #FEC956;
+}
+
+#main {
+    width: 100%;
+    padding: 120px 0;
+
+    .componentsWrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+}
+
+@import 'productView';
+@import 'cartView';

@@ -1,0 +1,16 @@
+.priceWrapper {
+    font-weight: bold;
+
+    input {
+        border: none;
+        font-size: 1.2em;
+    }
+}
+
+@import 'common';
+
+.addToCartButton {
+    @include button-style(#00B372, #006852);
+}
+
+@import 'selectProductView';
