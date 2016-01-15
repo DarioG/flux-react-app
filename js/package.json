@@ -9,6 +9,10 @@
     "flux": "^2.0.1"
   },
   "scripts": {
-    "build": "browserify -t babelify src/app.js > build.js"
+    "build": "browserify -t babelify src/app.js > build.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest-cli": "^0.8.2"
   }
 }
