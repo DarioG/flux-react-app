@@ -4,13 +4,23 @@ var assign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
 
 var _data = {};
+var _selectedProduct;
 
 function addData(data) {
     _data = data;
 }
+
+function setSelected(sku) {
+    _selectedProduct = parseInt(sku, 10);
+}
+
 var ProductStore = assign({}, EventEmitter.prototype, {
     getData: function () {
         return _data;
+    },
+
+    getSelectedProduct: function () {
+        return _selectedProduct;
     },
 
     emitChange: function() {
@@ -27,9 +37,18 @@ var ProductStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function (action) {
-    if (action.actionType === AppConstants.PRODUCT_LOADED) {
-        addData(action.data);
-        ProductStore.emitChange();
+    switch (action.actionType) {
+        case AppConstants.PRODUCT_LOADED:
+            addData(action.data);
+            setSelected(action.data.variants[0].sku);
+            ProductStore.emitChange();
+
+            break;
+        case AppConstants.PRODUCT_SELECTED:
+            setSelected(action.sku);
+            ProductStore.emitChange();
+
+            break;
     }
 });
 

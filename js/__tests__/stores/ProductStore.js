@@ -16,7 +16,26 @@ describe('ProductStore', function () {
         constants = require('../../src/constants/AppConstants');
         dispatcher = require('../../src/dispatcher/AppDispatcher');
         data = {
-            id: 'yeja'
+            'id': '001100112',
+            'name': 'Espresso Coffee Brazil',
+            'image': 'brazil-coffee.jpg',
+            'description': 'This coffee is picked by hand when fully ripe, sorted and dried with a Natural Process for 16 days on raised beds. Aroma of hazelnut and chocolate, stone fruit acidity with mild tropical fruit, rich and smooth chocolate mouthfeel.',
+            'variants': [{
+                'sku': 123123123,
+                'type': '284g Package',
+                'price': 10.85,
+                'inventory': 1
+            }, {
+                'sku': 124124124,
+                'type': '6 Pack',
+                'price': 62.99,
+                'inventory': 5
+            }, {
+                'sku': 125125125,
+                'type': '12 Pack',
+                'price': 119.99,
+                'inventory': 3
+            }]
         };
 
         mockedCallback = jest.genMockFunction();
@@ -44,8 +63,43 @@ describe('ProductStore', function () {
             expect(store.getData()).toEqual(data);
         });
 
+        it('should select the first product', function () {
+            expect(store.getSelectedProduct()).toBe(123123123);
+        });
+
         it('should emit the change', function () {
             expect(mockedCallback).toBeCalled();
+        });
+
+        describe('when the dispatcher dispatches PRODUCT_SELECTED event', function () {
+
+            beforeEach(function () {
+                mockedCallback.mockClear();
+                dispatcher.register.mock.calls[0][0].call(null, {
+                    actionType: constants.PRODUCT_SELECTED,
+                    sku: '125125125'
+                });
+            });
+
+            it('should mark the selected product as selected', function () {
+                expect(store.getSelectedProduct()).toBe(125125125);
+            });
+
+            it('should emit the change', function () {
+                expect(mockedCallback).toBeCalled();
+            });
+
+            describe('if another event is triggered', function () {
+
+                it('should not modify the selected one', function () {
+                    dispatcher.register.mock.calls[0][0].call(null, {
+                        actionType: 'dummy',
+                        data: 'dummy'
+                    });
+
+                    expect(store.getSelectedProduct()).toBe(125125125);
+                });
+            });
         });
     });
 

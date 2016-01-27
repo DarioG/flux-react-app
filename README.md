@@ -9,3 +9,11 @@ a simple app made with react and using flux pattern
     4. npm run build
     5. go to /yourlocalcopy/
     6. open index.html in your favourite browser :)
+
+## Running the unit tests
+
+    1. go to /yourlocalcopy/js
+    2. npm run test
+
+Enjoy! :)
+    

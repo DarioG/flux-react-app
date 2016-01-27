@@ -37,6 +37,13 @@ var ProductAction = {
             actionType: AppConstants.PRODUCT_LOADED,
             data: fetchData()
         });
+    },
+
+    selectProduct: function (sku) {
+        AppDispatcher.dispatch({
+            actionType: AppConstants.PRODUCT_SELECTED,
+            sku: sku
+        });
     }
 };
 

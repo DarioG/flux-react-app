@@ -3,6 +3,16 @@ jest.dontMock('../../src/constants/AppConstants');
 
 describe('ProductAction', function () {
 
+    var action,
+        dispatcher,
+        constants;
+
+    beforeEach(function () {
+        action = require('../../src/actions/ProductAction');
+        dispatcher = require('../../src/dispatcher/AppDispatcher');
+        constants = require('../../src/constants/AppConstants');
+    });
+
     describe('loadData()', function () {
 
         it('should call the API', function () {
@@ -37,10 +47,6 @@ describe('ProductAction', function () {
             };
 
             it('should dispatch the PRODUCT_LOADED event with the proper data', function () {
-                var action = require('../../src/actions/ProductAction'),
-                    dispatcher = require('../../src/dispatcher/AppDispatcher'),
-                    constants = require('../../src/constants/AppConstants');
-
                 action.loadData();
 
                 expect(dispatcher.dispatch.mock.calls.length).toBe(1);
@@ -48,6 +54,19 @@ describe('ProductAction', function () {
                     actionType: constants.PRODUCT_LOADED,
                     data: fetchData()
                 });
+            });
+        });
+    });
+
+    describe('selectProduct()', function () {
+
+        it('should dispatch the event with the selected data product', function () {
+            action.selectProduct(124124124);
+
+            expect(dispatcher.dispatch.mock.calls.length).toBe(1);
+            expect(dispatcher.dispatch.mock.calls[0][0]).toEqual({
+                actionType: constants.PRODUCT_SELECTED,
+                sku: 124124124
             });
         });
     });

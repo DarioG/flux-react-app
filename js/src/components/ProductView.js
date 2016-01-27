@@ -12,7 +12,7 @@ var DescriptionView = React.createClass({
             <h2>{this.props.data.name}</h2>
             <p>{this.props.data.description}</p>
             <div>
-                <ProductForm data={this.props.data.variants} />
+                <ProductForm data={this.props.data.variants} selected={this.props.selected}/>
             </div>
           </section>
         </div>;

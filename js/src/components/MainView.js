@@ -27,8 +27,9 @@ var MainView = React.createClass({
     },
 
     render: function() {
+        debugger;
         return <div className="componentsWrapper">
-            <ProductView data={this.state}/>
+            <ProductView data={this.state} selected={ProducStore.getSelectedProduct()}/>
             <CartView name={this.state.name} />
         </div>;
     },
