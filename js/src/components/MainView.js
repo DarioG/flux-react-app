@@ -11,7 +11,7 @@ function getState() {
         'description': '',
         'variants': []
     };
-};
+}
 
 var MainView = React.createClass({
     getInitialState: function() {
@@ -27,7 +27,6 @@ var MainView = React.createClass({
     },
 
     render: function() {
-        debugger;
         return <div className="componentsWrapper">
             <ProductView data={this.state} selected={ProducStore.getSelectedProduct()}/>
             <CartView name={this.state.name} />

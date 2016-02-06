@@ -70,4 +70,18 @@ describe('ProductAction', function () {
             });
         });
     });
+
+    describe('addToCart()', function () {
+
+        it('should dispatch the event with the selected product', function () {
+            var product = {};
+            action.addToCart(product);
+
+            expect(dispatcher.dispatch.mock.calls.length).toBe(1);
+            expect(dispatcher.dispatch.mock.calls[0][0]).toEqual({
+                actionType: constants.ADD_TO_CART,
+                product: product
+            });
+        });
+    });
 });

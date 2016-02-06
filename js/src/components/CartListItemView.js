@@ -3,10 +3,10 @@ var React = require('react');
 var CartListItemView = React.createClass({
 
     render: function() {
-        return <p className="cartListItemView">
+        return <div className="cartListItemView">
             <div>{this.props.type}</div>
             <div>{this.props.price}</div>
-        </p>;
+        </div>;
     }
 });
 

@@ -44,6 +44,13 @@ var ProductAction = {
             actionType: AppConstants.PRODUCT_SELECTED,
             sku: sku
         });
+    },
+
+    addToCart: function (product) {
+        AppDispatcher.dispatch({
+            actionType: AppConstants.ADD_TO_CART,
+            product: product
+        });
     }
 };
 
