@@ -40,6 +40,20 @@ img {
     border: none;
     font-size: 1.2em; }
 
+input[type="submit"]:disabled {
+  color: white;
+  background: linear-gradient(gray 80%, gray);
+  background-color: gray;
+  border: none;
+  border-radius: 3px;
+  width: 100%;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 5px 0;
+  cursor: pointer; }
+  input[type="submit"]:disabled:active {
+    background: linear-gradient(gray 20%, gray); }
+
 .addToCartButton {
   color: white;
   background: linear-gradient(#00B372 80%, #006852);

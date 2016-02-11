@@ -101,6 +101,31 @@ describe('ProductStore', function () {
                 });
             });
         });
+
+        describe('when the dispatcher dispatches ADD_TO_CART', function () {
+
+            beforeEach(function () {
+                mockedCallback.mockClear();
+
+                dispatcher.register.mock.calls[0][0].call(null, {
+                    actionType: constants.ADD_TO_CART,
+                    product: {
+                        'sku': 124124124,
+                        'type': '6 Pack',
+                        'price': 62.99,
+                        'inventory': 5
+                    }
+                });
+            });
+
+            it('should update the inventory items', function () {
+                expect(store.getData().variants[1].remains).toEqual(4);
+            });
+
+            it('should emit the change', function () {
+                expect(mockedCallback).toBeCalled();
+            });
+        });
     });
 
     describe('when the dispatcher dispatches another event', function () {

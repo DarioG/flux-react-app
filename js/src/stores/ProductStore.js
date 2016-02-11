@@ -8,6 +8,18 @@ var _selectedProduct;
 
 function addData(data) {
     _data = data;
+
+    data.variants.forEach(function (item) {
+        item.remains = item.inventory;
+    });
+}
+
+function removeFromInventory(sku){
+    _data.variants.forEach(function (item) {
+        if (item.sku === sku) {
+            item.remains--;
+        }
+    });
 }
 
 function setSelected(sku) {
@@ -46,6 +58,12 @@ AppDispatcher.register(function (action) {
             break;
         case AppConstants.PRODUCT_SELECTED:
             setSelected(action.sku);
+            ProductStore.emitChange();
+
+            break;
+
+        case AppConstants.ADD_TO_CART:
+            removeFromInventory(action.product.sku);
             ProductStore.emitChange();
 
             break;
