@@ -24,7 +24,7 @@ var CartView = React.createClass({
     render: function() {
         return <div className="cartView">
             <CartListView name={this.props.name} items={this.state} />
-            <TotalView items={this.state.items} />
+            <TotalView items={this.state} />
         </div>;
     },
 
