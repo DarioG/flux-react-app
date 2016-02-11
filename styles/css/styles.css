@@ -76,6 +76,18 @@ img {
 .itemsList {
   min-height: 50px; }
 
+.cartListItemView {
+  height: 40px; }
+
+.count {
+  float: left;
+  height: 100%;
+  font-weight: bold;
+  margin-right: 10px; }
+
+.productInfo {
+  height: 100%; }
+
 .removeButton {
   color: white;
   background: linear-gradient(#ED3F00 80%, #9C2A00);

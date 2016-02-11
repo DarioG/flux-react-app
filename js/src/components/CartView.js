@@ -22,7 +22,6 @@ var CartView = React.createClass({
     },
 
     render: function() {
-        debugger;
         return <div className="cartView">
             <CartListView name={this.props.name} items={this.state} />
             <TotalView items={this.state.items} />
@@ -30,7 +29,6 @@ var CartView = React.createClass({
     },
 
     _onChange: function() {
-        debugger;
         this.setState(CartStore.getData());
     }
 });

@@ -11,6 +11,7 @@
 }
 
 @import 'common';
+@import 'cartListItemView';
 
 .removeButton {
     @include button-style(#ED3F00, #9C2A00);

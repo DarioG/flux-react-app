@@ -2,13 +2,21 @@ var React = require('react');
 var SelectProductView = require('./SelectProductView');
 var ProductAction = require('../actions/ProductAction');
 
+var _selectedProduct = null;
+
+function getSelectedProduct(products, selectedSku) {
+    return products.find(function (element) {
+        return element.sku === selectedSku;
+    });
+}
+
 var ProductForm = React.createClass({
     render: function() {
-        var selected = this.props.selected,
-            selectedProduct = this.props.data.find(function (element) {
-                return element.sku === selected;
-            }),
-            currentPrice = (selectedProduct ? selectedProduct.price : 0) + "€";
+        var currentPrice;
+
+        _selectedProduct = getSelectedProduct(this.props.data, this.props.selected);
+
+        currentPrice = (_selectedProduct ? _selectedProduct.price : 0) + "€";
 
         return <form>
             <div className="priceWrapper">
@@ -20,12 +28,8 @@ var ProductForm = React.createClass({
     },
 
     _onClick: function (event) {
-        debugger;
-        var selectedProduct = this.props.data.find(function (element) {
-            return element.sku === this.props.selected;
-        }.bind(this));
         event.preventDefault();
-        ProductAction.addToCart(selectedProduct);
+        ProductAction.addToCart(_selectedProduct);
     }
 });
 

@@ -5,9 +5,10 @@ function getItems (products) {
     var i,
         items = [];
 
-    debugger;
     for (i in products) {
-        items.push(<CartListItemView type={products[i][0].type} price={products[i][0].price} />);
+        if (products.hasOwnProperty(i)) {
+            items.push(<CartListItemView type={products[i][0].type} price={products[i][0].price} count={products[i].length}/>);
+        }
     }
 
     return items;
