@@ -19,7 +19,7 @@ describe('ProductStore', function () {
             'id': '001100112',
             'name': 'Espresso Coffee Brazil',
             'image': 'brazil-coffee.jpg',
-            'description': 'This coffee is picked by hand when fully ripe, sorted and dried with a Natural Process for 16 days on raised beds. Aroma of hazelnut and chocolate, stone fruit acidity with mild tropical fruit, rich and smooth chocolate mouthfeel.',
+            'description': 'yeja',
             'variants': [{
                 'sku': 123123123,
                 'type': '284g Package',
