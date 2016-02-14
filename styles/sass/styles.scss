@@ -4,15 +4,29 @@ body {
 }
 
 #main {
-    width: 100%;
-    padding: 120px 0;
+    padding: 20px;
+    
 
     .componentsWrapper {
         display: flex;
-        justify-content: flex-end;
-        align-items: flex-start;
+        flex-direction: column-reverse;
+        justify-content: center;
     }
 }
 
 @import 'productView';
 @import 'cartView';
+
+
+@media screen and (min-width: 900px) {
+    #main {
+        padding: 120px 0;
+
+        .componentsWrapper {
+            
+            justify-content: flex-end;
+            align-items: flex-start;
+            flex-direction: row;
+        }
+    }
+}

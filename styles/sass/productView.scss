@@ -1,25 +1,39 @@
 .productView {
-    width: 50%;
     padding: 50px;
     background-color: white;
 }
 
 .productPicture {
-    width: 60%;
+    width: 100%;
     display: inline-block;    
 }
 
 img {
-    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
 }
 
 .infoSection {
     display: inline-block;
-    width: 30%;
     vertical-align: top;
-    margin-left: 7%;
-    line-height: 20px;
+    line-height: 25px;
     font-size: 1.2em;
 }
 
-@import 'productForm'
+@import 'productForm';
+
+@media screen and (min-width: 900px) {
+    .productView {
+        width: 50%;
+    }
+
+    .productPicture {
+        width: 55%;
+    }
+
+    .infoSection {
+        width: 35%;
+        margin-left: 7%;
+    }
+}

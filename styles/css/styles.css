@@ -3,31 +3,29 @@ body {
   background-color: #FEC956; }
 
 #main {
-  width: 100%;
-  padding: 120px 0; }
+  padding: 20px; }
   #main .componentsWrapper {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start; }
+    flex-direction: column-reverse;
+    justify-content: center; }
 
 .productView {
-  width: 50%;
   padding: 50px;
   background-color: white; }
 
 .productPicture {
-  width: 60%;
+  width: 100%;
   display: inline-block; }
 
 img {
-  max-width: 100%; }
+  width: 100%;
+  margin: 0 auto;
+  display: block; }
 
 .infoSection {
   display: inline-block;
-  width: 30%;
   vertical-align: top;
-  margin-left: 7%;
-  line-height: 20px;
+  line-height: 25px;
   font-size: 1.2em; }
 
 .priceWrapper {
@@ -74,13 +72,19 @@ input[type="submit"]:disabled {
   border-radius: 2px;
   padding: 2px; }
 
+@media screen and (min-width: 900px) {
+  .productView {
+    width: 50%; }
+  .productPicture {
+    width: 55%; }
+  .infoSection {
+    width: 35%;
+    margin-left: 7%; } }
+
 .cartView {
-  vertical-align: top;
-  width: 15%;
-  margin: 0 50px;
   padding: 20px;
   background-color: white;
-  min-height: 50%; }
+  margin-bottom: 30px; }
 
 .cartListView {
   margin-bottom: 20px; }
@@ -122,3 +126,20 @@ input[type="submit"]:disabled {
   font-weight: bold;
   margin: 0 -20px -20px -20px;
   padding: 15px; }
+
+@media screen and (min-width: 900px) {
+  .cartView {
+    vertical-align: top;
+    width: 15%;
+    margin: 0 50px;
+    padding: 20px;
+    background-color: white;
+    min-height: 50%; } }
+
+@media screen and (min-width: 900px) {
+  #main {
+    padding: 120px 0; }
+    #main .componentsWrapper {
+      justify-content: flex-end;
+      align-items: flex-start;
+      flex-direction: row; } }

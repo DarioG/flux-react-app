@@ -25,7 +25,7 @@ var CartListView = React.createClass({
             <div className="itemsList">
                 {items}
             </div>
-            <button name="removeButton" className="removeButton" onClick={this._onClick}>Remove</button>
+            <button name="removeButton" className="removeButton" onClick={this._onClick}>Clear Cart</button>
         </div>;
     },
 

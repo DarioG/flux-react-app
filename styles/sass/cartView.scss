@@ -1,11 +1,19 @@
 .cartView {
-    vertical-align: top;
-    width: 15%;
-    margin: 0 50px;
     padding: 20px;
     background-color: white;
-    min-height: 50%;
+    margin-bottom: 30px;
 }
 
 @import 'cartList';
 @import 'totalView';
+
+@media screen and (min-width: 900px) {
+    .cartView {
+        vertical-align: top;
+        width: 15%;
+        margin: 0 50px;
+        padding: 20px;
+        background-color: white;
+        min-height: 50%;
+    }
+}
