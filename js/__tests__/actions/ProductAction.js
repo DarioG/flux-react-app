@@ -5,18 +5,25 @@ describe('ProductAction', function () {
 
     var action,
         dispatcher,
+        ajax,
         constants;
 
     beforeEach(function () {
         action = require('../../src/actions/ProductAction');
         dispatcher = require('../../src/dispatcher/AppDispatcher');
         constants = require('../../src/constants/AppConstants');
+        ajax = require('../../src/utils/ajax');
     });
 
     describe('loadData()', function () {
 
+        beforeEach(function () {
+            action.loadData();
+        });
+
         it('should call the API', function () {
-            //code that test you call here
+            expect(ajax.get.mock.calls.length).toBe(1);
+            expect(ajax.get.mock.calls[0][0]).toEqual('api.json', jasmine.any(Function), jasmine.any(Object));
         });
 
         describe('when we get the response', function () {
@@ -47,12 +54,14 @@ describe('ProductAction', function () {
             };
 
             it('should dispatch the PRODUCT_LOADED event with the proper data', function () {
-                action.loadData();
+                var data = {};
+
+                ajax.get.mock.calls[0][1].call(ajax.get.mock.calls[0][2], data);
 
                 expect(dispatcher.dispatch.mock.calls.length).toBe(1);
                 expect(dispatcher.dispatch.mock.calls[0][0]).toEqual({
                     actionType: constants.PRODUCT_LOADED,
-                    data: fetchData()
+                    data: data
                 });
             });
         });
