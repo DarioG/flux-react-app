@@ -29,7 +29,7 @@ var CartView = React.createClass({
     },
 
     _onChange: function() {
-        this.setState(CartStore.getData());
+        this.replaceState(CartStore.getData());
     }
 });
 

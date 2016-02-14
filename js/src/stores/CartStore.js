@@ -13,6 +13,10 @@ var _addData = function (product) {
     }
 };
 
+var _clearCart = function () {
+    _data = {};
+};
+
 var CartStore = assign({}, EventEmitter.prototype, {
     getData: function () {
         return _data;
@@ -30,6 +34,11 @@ var CartStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (action) {
     if (action.actionType === AppConstants.ADD_TO_CART) {
         _addData(action.product);
+        CartStore.emitChange();
+    }
+
+    if (action.actionType === AppConstants.CART_CLEAR) {
+        _clearCart();
         CartStore.emitChange();
     }
 });

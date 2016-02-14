@@ -2,12 +2,12 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 var ajax = require('../utils/ajax');
 
-function dataLoaded(data) {
+var dataLoaded = function (data) {
     AppDispatcher.dispatch({
         actionType: AppConstants.PRODUCT_LOADED,
         data: data
     });
-}
+};
 
 var ProductAction = {
 
@@ -16,7 +16,6 @@ var ProductAction = {
     */
     loadData: function () {
         ajax.get('api.json', dataLoaded, this);
-
     },
 
     selectProduct: function (sku) {

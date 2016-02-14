@@ -37,6 +37,7 @@ var MainView = React.createClass({
     * Event handler for 'change' events coming from the TodoStore
     */
     _onChange: function() {
+        debugger;
         this.setState(ProducStore.getData());
     }
 });

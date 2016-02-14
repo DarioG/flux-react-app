@@ -6,21 +6,27 @@ var EventEmitter = require('events').EventEmitter;
 var _data = {};
 var _selectedProduct;
 
-function addData(data) {
+var addData = function (data) {
     _data = data;
 
     data.variants.forEach(function (item) {
         item.remains = item.inventory;
     });
-}
+};
 
-function removeFromInventory(sku){
+var removeFromInventory = function (sku){
     _data.variants.forEach(function (item) {
         if (item.sku === sku) {
             item.remains--;
         }
     });
-}
+};
+
+var setInventoryInitialState = function () {
+    _data.variants.forEach(function (item) {
+        item.remains = item.inventory;
+    });
+};
 
 function setSelected(sku) {
     _selectedProduct = parseInt(sku, 10);
@@ -66,6 +72,12 @@ AppDispatcher.register(function (action) {
             removeFromInventory(action.product.sku);
             ProductStore.emitChange();
 
+            break;
+
+        case AppConstants.CART_CLEAR:
+            setInventoryInitialState();
+            ProductStore.emitChange();
+            
             break;
     }
 });

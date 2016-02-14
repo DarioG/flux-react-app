@@ -6,7 +6,11 @@ describe('CartStore', function () {
 
     var store,
         constants,
-        dispatcher;
+        dispatcher,
+
+    dispatch = function (eventConfig) {
+        dispatcher.register.mock.calls[0][0].call(null, eventConfig);
+    };
 
     beforeEach(function () {
         store = require('../../src/stores/CartStore');
@@ -31,7 +35,7 @@ describe('CartStore', function () {
 
             store.addChangeListener(mockedCallback);
 
-            dispatcher.register.mock.calls[0][0].call(null, {
+            dispatch({
                 actionType: constants.ADD_TO_CART,
                 product: product
             });
@@ -54,8 +58,7 @@ describe('CartStore', function () {
                         'inventory': 1
                     };
 
-
-                dispatcher.register.mock.calls[0][0].call(null, {
+                dispatch({
                     actionType: constants.ADD_TO_CART,
                     product: newProduct
                 });
@@ -79,7 +82,7 @@ describe('CartStore', function () {
                         'inventory': 1
                     };
 
-                    dispatcher.register.mock.calls[0][0].call(null, {
+                    dispatch({
                         actionType: constants.ADD_TO_CART,
                         product: newOldProduct
                     });
@@ -97,6 +100,25 @@ describe('CartStore', function () {
         it('should emit the change', function () {
             expect(mockedCallback).toBeCalled();
         });
+
+        describe('when the dispatcher dispatchs CART_CLEAR', function () {
+
+            beforeEach(function () {
+                mockedCallback.mockClear();
+
+                dispatch({
+                    actionType: constants.CART_CLEAR
+                });
+            });
+
+            it('should clear the cart', function () {
+                expect(store.getData()).toEqual({});
+            });
+
+            it('should emit the change', function () {
+                expect(mockedCallback).toBeCalled();
+            });
+        });
     });
 
     describe('when the dispatcher dispatchs any other event', function () {
@@ -104,7 +126,7 @@ describe('CartStore', function () {
         it('should do nothing', function () {
             var product = 'fake';
 
-            dispatcher.register.mock.calls[0][0].call(null, {
+            dispatch({
                 actionType: 'anyOtherEvent',
                 product: product
             });

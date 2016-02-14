@@ -1,7 +1,8 @@
 var React = require('react');
 var CartListItemView = require('./CartListItemView');
+var CartAction = require('../actions/CartAction');
 
-function getItems (products) {
+var getItems = function (products) {
     var i,
         items = [];
 
@@ -24,8 +25,14 @@ var CartListView = React.createClass({
             <div className="itemsList">
                 {items}
             </div>
-            <button name="removeButton" className="removeButton">Remove</button>
+            <button name="removeButton" className="removeButton" onClick={this._onClick}>Remove</button>
         </div>;
+    },
+
+    _onClick: function (e) {
+        e.preventDefault();
+
+        CartAction.clearCart();
     }
 });
 

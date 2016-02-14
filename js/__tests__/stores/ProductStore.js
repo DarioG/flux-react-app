@@ -8,7 +8,11 @@ describe('ProductStore', function () {
         dispatcher,
         constants,
         mockedCallback,
-        data;
+        data,
+
+    dispatch = function (eventConfig) {
+        dispatcher.register.mock.calls[0][0].call(null, eventConfig);
+    };
 
     beforeEach(function () {
         store = require('../../src/stores/ProductStore');
@@ -53,7 +57,7 @@ describe('ProductStore', function () {
     describe('when the dispatcher dispatches PRODUCT_LOADED event', function () {
 
         beforeEach(function () {
-            dispatcher.register.mock.calls[0][0].call(null, {
+            dispatch({
                 actionType: constants.PRODUCT_LOADED,
                 data: data
             });
@@ -75,7 +79,7 @@ describe('ProductStore', function () {
 
             beforeEach(function () {
                 mockedCallback.mockClear();
-                dispatcher.register.mock.calls[0][0].call(null, {
+                dispatch({
                     actionType: constants.PRODUCT_SELECTED,
                     sku: '125125125'
                 });
@@ -92,7 +96,7 @@ describe('ProductStore', function () {
             describe('if another event is triggered', function () {
 
                 it('should not modify the selected one', function () {
-                    dispatcher.register.mock.calls[0][0].call(null, {
+                    dispatch({
                         actionType: 'dummy',
                         data: 'dummy'
                     });
@@ -107,7 +111,7 @@ describe('ProductStore', function () {
             beforeEach(function () {
                 mockedCallback.mockClear();
 
-                dispatcher.register.mock.calls[0][0].call(null, {
+                dispatch({
                     actionType: constants.ADD_TO_CART,
                     product: {
                         'sku': 124124124,
@@ -125,13 +129,34 @@ describe('ProductStore', function () {
             it('should emit the change', function () {
                 expect(mockedCallback).toBeCalled();
             });
+
+            describe('when the dispatcher dispatches CART_CLEAR', function () {
+
+                beforeEach(function () {
+                    mockedCallback.mockClear();
+
+                    dispatch({
+                        actionType: constants.CART_CLEAR
+                    });
+                });
+
+                it('should set the inventary to the initial state', function () {
+                    expect(store.getData().variants[0].remains).toEqual(1);
+                    expect(store.getData().variants[1].remains).toEqual(5);
+                    expect(store.getData().variants[2].remains).toEqual(3);
+                });
+
+                it('should emit the change', function () {
+                    expect(mockedCallback).toBeCalled();
+                });
+            });
         });
     });
 
     describe('when the dispatcher dispatches another event', function () {
 
         it('should do nothing', function () {
-            dispatcher.register.mock.calls[0][0].call(null, {
+            dispatch({
                 actionType: 'another',
                 data: data
             });
