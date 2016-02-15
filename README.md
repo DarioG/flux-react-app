@@ -1,6 +1,10 @@
 # flux-react-app
 a simple app made with react and using flux pattern
 
+For this test i have used the npm library created by facebook for this. Modules were created with browserify and the views are created with react js. I compiled everything with babelify.
+
+I covered everything, but the views, with tests, using jest tool. You can find them under /js/__test__/
+
 ## Running the app
 
 ### Init the local server
