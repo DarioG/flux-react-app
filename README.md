@@ -1,5 +1,12 @@
 # flux-react-app
-a simple app made with react and using flux pattern
+a simple app made with react and using flux pattern. For this example I use the browserrify module from facebook
+npm flux. So everything has to be "compiled" with npm.
+
+## Architecture
+
+![Image of Architecture](diagrama.png)
+
+Note: each color marks with arrows are invoqued when an event is triggered, i.e All arrows with blue are triggered when a product is selected
 
 ## Running the app
 
