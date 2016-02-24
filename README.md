@@ -1,14 +1,11 @@
 # flux-react-app
-a simple app made with react and using flux pattern. For this example I use the browserrify module from facebook
-npm flux. So everything has to be "compiled" with npm.
+A simple app made with react and using flux pattern. For this example I used the npm library created by facebook for flux architecture. Modules were created with browserify and the views are created with react js. I compiled everything with babelify.
 
 ## Architecture
 
 ![Image of Architecture](diagrama.png)
 
 Note: each color marks with arrows are invoqued when an event is triggered, i.e All arrows with blue are triggered when a product is selected
-
-For this test i have used the npm library created by facebook for this. Modules were created with browserify and the views are created with react js. I compiled everything with babelify.
 
 I covered everything, but the views, with tests, using jest tool. You can find them under /js/__test__/
 
